@@ -14,16 +14,14 @@ class CreateUsuariosTable extends Migration
     public function up()
     {
         Schema::create('usuarios', function (Blueprint $table) {
-            $table->increments('id_usuario');
-            $table->tinyInteger('caja')->unsigned();
+            $table->increments('id');
             $table->boolean('admin');
             $table->string('nombre', 50);
             $table->string('apellidos', 50);
             $table->string('usuario', 30);
             $table->string('codigo', 30);
-            $table->string('telefono', 10)->nullable();
+            $table->string('telefono', 10);
             $table->string('correo', 50);
-            $table->foreign('caja')->references('id_caja')->on('cajas');
             $table->timestamps();
         });
     }

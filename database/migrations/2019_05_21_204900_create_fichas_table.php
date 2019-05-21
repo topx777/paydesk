@@ -15,14 +15,13 @@ class CreateFichasTable extends Migration
     {
         Schema::create('fichas', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('cola')->unsigned();
-            $table->integer('numero')->unsigned();
-            $table->string('codigo_ficha', 15);
+            $table->integer('colaID')->unsigned();
+            $table->integer('numero');
+            $table->string('codigoFicha', 15);
             $table->boolean('atendido');
-            $table->datetime('fecha');
+            $table->dateTime('fecha');
+            $table->foreign('colaID')->references('id')->on('colas');
             $table->timestamps();
-
-            $table->foreign('cola')->references('id_cola')->on('colas');
         });
     }
 

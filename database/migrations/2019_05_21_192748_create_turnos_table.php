@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateColasTable extends Migration
+class CreateTurnosTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateColasTable extends Migration
      */
     public function up()
     {
-        Schema::create('colas', function (Blueprint $table) {
-            $table->tinyIncrements('id_cola');
-            $table->string('codigo_cola', 15);
-            $table->tinyInteger('prioridad')->unsigned();
-            $table->tinyInteger('cantidad')->unsigned()->nullable();
+        Schema::create('turnos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre', 15);
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateColasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('colas');
+        Schema::dropIfExists('turnos');
     }
 }

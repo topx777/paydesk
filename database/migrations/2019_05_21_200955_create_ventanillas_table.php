@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCajasTable extends Migration
+class CreateVentanillasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateCajasTable extends Migration
      */
     public function up()
     {
-        Schema::create('cajas', function (Blueprint $table) {
-            $table->tinyIncrements('id_caja');
+        Schema::create('ventanillas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('areaID')->unsigned();
             $table->string('identificador', 15);
-            $table->time('hora_atencion_inicio');
-            $table->time('hora_atencion_fin');
+            $table->string('nombre', 35);
+            $table->tinyInteger('estado');
+            $table->foreign('areaID')->references('id')->on('areas');
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateCajasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cajas');
+        Schema::dropIfExists('ventanillas');
     }
 }
